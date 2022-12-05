@@ -1,0 +1,56 @@
+application:
+  fullnameOverride: "SERVICE_NAME"
+  serviceAccount:
+    # do not create service account because it will override existing service account
+    create: false
+    annotations: {}
+    name: "vinbase-config"
+  service:
+    enabled: true
+    type: ClusterIP
+    ports:
+      - protocol: TCP
+        port: 5025
+        targetPort: 80
+  deployment:
+    replicaCount: 1
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 70%
+        maxSurge: 20%
+    podAnnotations: {}
+    terminationGracePeriodSeconds: 20
+    imagePullSecrets: []
+    podSecurityContext: {}
+    containers:
+      - name: SERVICE_NAME
+        securityContext: {}
+        image:
+          repository: 921042051488.dkr.ecr.ap-southeast-1.amazonaws.com/SERVICE_NAME
+          pullPolicy: IfNotPresent
+          tag: "dev-d3fc384"
+        ports:
+          - containerPort: 80
+            name: port80
+        command: []
+        livenessProbe: {}
+        readinessProbe: {}
+        resources: {}
+        env:
+          - name: SERVICE_ENV
+            value: devaws
+        volumeMounts: []
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/bash", "-c", "sleep 1"]
+    volumes: []
+    nodeSelector:
+      node_type: "bot"
+    tolerations: {}
+    affinity: {}
+  ingress:
+    enabled: false
+  autoscaling:
+    enabled: false

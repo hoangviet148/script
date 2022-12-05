@@ -1,0 +1,145 @@
+{
+  "version": 4,
+  "terraform_version": "1.3.6",
+  "serial": 1,
+  "lineage": "18770ca3-fa9f-59fe-22f0-a07e4acf5c77",
+  "outputs": {},
+  "resources": [
+    {
+      "module": "module.ec2_kafka_security_group",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "this_name_prefix",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-southeast-1:921042051488:security-group/sg-073f21a9f96c39d01",
+            "description": "This is a security group for Kafka cluster",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "All protocols",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [
+                  "::/0"
+                ],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-073f21a9f96c39d01",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "All protocols",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "name": "BDI-Prd-SG-Kafka-20211015062926104800000001",
+            "name_prefix": "BDI-Prd-SG-Kafka-",
+            "owner_id": "921042051488",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "BDI-Prd-SG-Kafka"
+            },
+            "tags_all": {
+              "Name": "BDI-Prd-SG-Kafka"
+            },
+            "timeouts": {
+              "create": "10m",
+              "delete": "15m"
+            },
+            "vpc_id": "vpc-0f46851fb5e1f0d75"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "data.aws_vpc.selected"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.ec2_kafka_security_group",
+      "mode": "managed",
+      "type": "aws_security_group_rule",
+      "name": "egress_rules",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 2,
+          "attributes": {
+            "cidr_blocks": [
+              "0.0.0.0/0"
+            ],
+            "description": "All protocols",
+            "from_port": 0,
+            "id": "sgrule-1753930137",
+            "ipv6_cidr_blocks": [
+              "::/0"
+            ],
+            "prefix_list_ids": [],
+            "protocol": "-1",
+            "security_group_id": "sg-073f21a9f96c39d01",
+            "self": false,
+            "source_security_group_id": null,
+            "to_port": 0,
+            "type": "egress"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjIifQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.ec2_kafka_security_group",
+      "mode": "managed",
+      "type": "aws_security_group_rule",
+      "name": "ingress_rules",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 2,
+          "attributes": {
+            "cidr_blocks": [
+              "0.0.0.0/0"
+            ],
+            "description": "All protocols",
+            "from_port": 0,
+            "id": "sgrule-3562011322",
+            "ipv6_cidr_blocks": [],
+            "prefix_list_ids": [],
+            "protocol": "-1",
+            "security_group_id": "sg-073f21a9f96c39d01",
+            "self": false,
+            "source_security_group_id": null,
+            "to_port": 0,
+            "type": "ingress"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjIifQ=="
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

@@ -1,0 +1,12 @@
+apiVersion: v2
+name: SERVICE_NAME
+description: A Helm chart k8s BDI
+
+type: application
+version: 0.0.1
+
+dependencies:
+- name: helm-common
+  version: 0.0.10
+  repository: "s3://vinbase-charts/helm-common"
+  alias: application
