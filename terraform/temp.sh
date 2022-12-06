@@ -19,17 +19,13 @@ declare -A ec2_instances_3
 ec2_instances_3=(['elasticsearch']='ec2_es["three"]'
                  ['kafka']='ec2_kafka["three"]')
 
-declare -A arrays_ec2
-arrays_ec2=(
-    ec2_instances_1
-    ec2_instances_2
-    ec2_instances_3
-)
-for array in ${arrays_ec2[@]}
+declare -A arrays_ec2=( (['test_1']=1) (['test_2']=2) )
+echo ${arrays_ec2[0,0]}
+for array in "${arrays_ec2[@]}"
 do  
-    echo $array
-    for instance in ${!array[@]}
+    echo "${array[*]}"
+    for item in ${!array[@]}
     do
-        echo ${instance}
+        echo test
     done
 done
