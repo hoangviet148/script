@@ -14,7 +14,7 @@ rm $FOLDER/terragrunt.hcl
 rm $FOLDER/provider.tf
 rm $FOLDER/backend.tf
 
-rm $FOLDER/.terraform.lock
+rm $FOLDER/.terraform.lock.hcl
 rm -rf $FOLDER/.terraform
 
 for instance in ${ec2_instances[@]}
