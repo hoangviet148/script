@@ -1,5 +1,5 @@
-SERVICE_NAME="mrc-service-worker"
-PATH_LOCAL="../vinbase-local"
+SERVICE_NAME="vinbase-flow-cloud"
+PATH_LOCAL="../../argocd/vinbase-local"
 
 mkdir -p $PATH_LOCAL/helmcharts/vinbase-charts/$SERVICE_NAME
 sed "s/SERVICE_NAME/$SERVICE_NAME/g" Chart.yaml > $PATH_LOCAL/helmcharts/vinbase-charts/$SERVICE_NAME/Chart.yaml
