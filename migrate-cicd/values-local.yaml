@@ -1,0 +1,54 @@
+application:
+  fullnameOverride: "SERVICE_NAME"
+  serviceAccount:
+    # do not create service account because it will override existing service account
+    create: false
+    annotations: {}
+    name: "vinbase-config"
+  service:
+    enabled: true
+    type: ClusterIP
+    ports:
+      - protocol: TCP
+        port: 8080
+        targetPort: 8080
+  deployment:
+    replicaCount: 1
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 70%
+        maxSurge: 20%
+    podAnnotations: {}
+    terminationGracePeriodSeconds: 20
+    imagePullSecrets:
+      - name: harbor-creds
+    podSecurityContext: {}
+    containers:
+      - name: SERVICE_NAME
+        securityContext: {}
+        image:
+          repository: 10.124.69.3:30444/vinbase-apps/SERVICE_NAME
+          pullPolicy: IfNotPresent
+          tag: "01eff7e"
+        ports:
+          - containerPort: 8080
+            name: port8080
+        command: []
+        livenessProbe: {}
+        readinessProbe: {}
+        resources: {}
+        env: []
+        volumeMounts: []
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/bash", "-c", "sleep 1"]
+    volumes: []
+    nodeSelector: {}
+    tolerations: {}
+    affinity: {}
+  ingress:
+    enabled: false
+  autoscaling:
+    enabled: false

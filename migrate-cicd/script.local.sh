@@ -1,4 +1,4 @@
-SERVICE_NAME="vinbase-flow-cloud"
+SERVICE_NAME="content-platform-admin"
 PATH_LOCAL="../../argocd/vinbase-local"
 
 mkdir -p $PATH_LOCAL/helmcharts/vinbase-charts/$SERVICE_NAME
