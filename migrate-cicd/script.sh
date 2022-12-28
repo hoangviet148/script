@@ -1,4 +1,4 @@
-SERVICE_NAME="virtual-assistant-gateway"
+SERVICE_NAME="owner-manual-frontend"
 
 PATH_DEV="../../argocd/vinbase-dev"
 PATH_STG="../../argocd/vinbase-staging"
